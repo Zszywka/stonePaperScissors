@@ -1,0 +1,49 @@
+{
+  "name": "stonePaperScissors",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm-run-all test:*",
+    "test:html": "globstar nu-html-checker *.html",
+    "test:js": "jshint js/*.js",
+    "init-project": "npm install && npm-run-all init:*",
+    "init:dirs": "mkdir -p sass css vendor images js",
+    "init:files": "touch README.md index.html sass/style.scss js/scripts.js",
+    "init:gitignore": "curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore -o .gitignore",
+    "build": "npm-run-all build:* test",
+    "build:clean": "rm -rf css/*.css",
+    "build:sass": "node-sass --output-style compact -o css sass",
+    "build:autoprefixer": "autoprefixer-cli css/style.css",
+    "build-dev:sass": "node-sass --output-style expanded --source-map true -o css sass",
+    "watch": "npm-run-all build -p watch:*",
+    "watch:browsersync": "browser-sync start --server --files css/*.css *.html",
+    "watch:sassprefixer": "onchange -d 100 sass/style.scss -- node-sass --output-style expanded --source-map true -o css sass && autoprefixer-cli -o css/style.prefixed.css css/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zszywka/stonePaperScissors.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zszywka/stonePaperScissors/issues"
+  },
+  "homepage": "https://github.com/Zszywka/stonePaperScissors#readme",
+  "devDependencies": {
+    "autoprefixer": "^8.2.0",
+    "autoprefixer-cli": "^1.0.0",
+    "autoprefixer-core": "^6.0.1",
+    "browser-sync": "^2.23.6",
+    "node-sass": "^4.8.3",
+    "npm-run-all": "^4.1.2",
+    "nu-html-checker": "^0.1.0",
+    "postcss-cli": "^5.0.0",
+    "globstar": "^1.0.0",
+    "jshint": "^2.9.5",
+    "rimraf": "^2.6.2",
+    "onchange": "^3.3.0"
+  },
+  "dependencies": {}
+}
