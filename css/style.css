@@ -19,10 +19,3 @@ body:before {
   white-space: pre;
   font-family: monospace;
   content: "Errno::ENOENT: No such file or directory @ rb_sysopen - stsass/style.scss"; }
-
-.row {
-      margin-right: -15px;
-      margin-left: -15px;
-      margin-bottom: 25px;
-      margin-top: 15px;
-}
