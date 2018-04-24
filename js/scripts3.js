@@ -67,8 +67,8 @@ function setGameElements() {
         // console.log("Nie udalo się znalezc opdowiedniego case'a")
   }
 }
-// calling this function
-setGameElements();
+// calling this function [at the end of the code]
+// setGameElements();
 
 // variable like:
     // score player
@@ -128,6 +128,8 @@ function playerPick(playerPick) {
     playerPickElem.innerHTML = playerPick;
     // in the table -write computer choice
     computerPickElem.innerHTML = computerPick;
+    // choice computer and choice player use in function checkRoundWinner(
+    checkRoundWinner(playerPick, computerPick);
 }
 
 // function checkRoundWinner(playerPick, computerPick) {
@@ -187,7 +189,10 @@ function checkRoundWinner(playerPick, computerPick) {
         computer.score++;
         computerPoints.innerHTML = computer.score;
     }
-
+    // update score
+    setGamePoints();
+    // the end of the game when score = 10
+    endGame();
 }
 
 // every time when we click the button with paper/scissors/stone function
@@ -203,8 +208,27 @@ function playerPick(playerPick) {
     checkRoundWinner(playerPick, computerPick);
 }
 
-//
+// update score player and computer
 function setGamePoints() {
     playerPointsElem.innerHTML = player.score;
     computerPointsElem.innerHTML = computer.score;
 }
+
+function endGame() {
+    if (computer.score == 10) {
+        alert('YOU LOST! GAME OVER');
+      // status game (we show only button)
+        gameState = 'ended';
+        // call a function that shows us new game / again? / button and table
+        setGameElements();
+    } else if (player.score == 10) {
+        alert('YOU WIN! GAME OVER');
+      // status game (we show only button)
+        gameState = 'ended';
+        // call a function that shows us new game / again? / button and table
+        setGameElements();
+    }
+}
+
+//  what we see when we first started/started the next time/we finished
+setGameElements();
