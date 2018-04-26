@@ -101,24 +101,21 @@ function checkRoundWinner(playerPick, computerPick) {
         (computerPick == 'scissors' &&  playerPick == 'paper') ||
         (computerPick == 'paper' &&  playerPick == 'rock')) {
 
-        winnerIs = 'computer';
-        console.log('winner is ' + winnerIs);
-    }
-
-    if (winnerIs == 'player') {
-        playerResultElem.innerHTML = "You win!";
-        computerResultElem.innerHTML = "You lost!"
-        player.score++;
-        playerPoints.innerHTML = player.score;
-
-        console.log("winner is " + winnerIs)
-
-    } else if (winnerIs == 'computer') {
+        winnerIs == 'computer';
         computerResultElem.innerHTML = " You win!";
         playerResultElem.innerHTML = "You lost!"
         computer.score++;
         computerPoints.innerHTML = computer.score;
+        console.log('winner is ' + winnerIs);
+    } else {
+        winnerIs == 'player';
+        playerResultElem.innerHTML = "You win!";
+        computerResultElem.innerHTML = "You lost!"
+        player.score++;
+        playerPoints.innerHTML = player.score;
+        console.log("winner is " + winnerIs);
     }
+    
     setGamePoints();
     endGame();
 }
@@ -148,4 +145,5 @@ function endGame() {
     }
 }
 
+//  what we see when we first started/started the next time/we finished
 setGameElements();
